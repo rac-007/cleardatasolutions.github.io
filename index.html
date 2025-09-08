@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ClearData Solutions — Turning messy data into clear insights</title>
+    <meta
+      name="description"
+      content="ClearData Solutions — Data cleaning, automation, dashboards and lightweight database setup for small businesses."
+    />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <style>
+      /* Reset / base */
+      :root {
+        --blue: #e53935;
+        --dark: #222;
+        --muted: #6b7280;
+        --card: #ffffff;
+        --bg: #f7fafc;
+        --radius: 12px;
+        --maxw: 1100px;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--dark);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+        padding: 32px 16px;
+        display: flex;
+        justify-content: center;
+      }
+      .site {
+        width: 100%;
+        max-width: var(--maxw);
+      }
+
+      /* Header / hero */
+      header.hero {
+        background: linear-gradient(
+          180deg,
+          rgba(229, 57, 53, 0.12),
+          rgba(229, 57, 53, 0.04)
+        );
+        border-radius: var(--radius);
+        padding: 34px;
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        box-shadow: 0 8px 30px rgba(30, 41, 59, 0.06);
+        flex-wrap: wrap;
+      }
+      .brand {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+      .logo {
+        width: 72px;
+        height: 72px;
+        flex: 0 0 72px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--blue), #ffb4b4);
+        color: #fff;
+        font-weight: 700;
+        font-size: 20px;
+        box-shadow: 0 6px 18px rgba(30, 136, 229, 0.18);
+      }
+      .hero-text h1 {
+        margin: 0;
+        font-size: 1.6rem;
+        color: var(--dark);
+      }
+      .hero-text p {
+        margin: 8px 0 0;
+        color: var(--muted);
+      }
+      .cta {
+        margin-left: auto;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 16px;
+        border-radius: 10px;
+        background: var(--blue);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        box-shadow: 0 6px 18px rgba(30, 136, 229, 0.12);
+      }
+
+      /* Sections */
+      .section {
+        margin-top: 20px;
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 24px;
+        box-shadow: 0 6px 18px rgba(11, 15, 20, 0.03);
+      }
+      h2 {
+        color: var(--blue);
+        margin: 0 0 12px 0;
+        font-size: 1.1rem;
+      }
+      p.small {
+        color: var(--muted);
+        margin: 0 0 12px 0;
+      }
+
+      /* services grid */
+      .services {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+      }
+      .service {
+        padding: 12px;
+        border-radius: 10px;
+        background: linear-gradient(180deg, #f8fbff, #ffffff);
+        border: 1px solid rgba(30, 136, 229, 0.06);
+      }
+      .service h3 {
+        margin: 0 0 6px 0;
+        font-size: 0.98rem;
+      }
+      .service p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      /* portfolio list */
+      .projects {
+        display: grid;
+        gap: 12px;
+      }
+      .project {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        padding: 12px;
+        border-radius: 10px;
+        background: #fbfdff;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+      }
+      .project img {
+        width: 120px;
+        height: 72px;
+        object-fit: cover;
+        border-radius: 8px;
+        flex: 0 0 120px;
+      }
+      .project .meta h4 {
+        margin: 0 0 6px 0;
+        font-size: 1rem;
+      }
+      .project .meta p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      /* about / contact */
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 320px;
+        gap: 18px;
+      }
+      .contact-card {
+        padding: 16px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #fff, #fbfdff);
+        border: 1px solid rgba(0, 0, 0, 0.04);
+      }
+      .contact-card a {
+        color: var(--dark);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      footer {
+        margin-top: 18px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      /* responsive */
+      @media (max-width: 840px) {
+        .two-col {
+          grid-template-columns: 1fr;
+        }
+        .cta {
+          margin-left: 0;
+          width: 100%;
+        }
+        .logo {
+          width: 64px;
+          height: 64px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site">
+      <header class="hero">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">CD</div>
+          <div class="hero-text">
+            <h1>ClearData Solutions</h1>
+            <p class="small">Turning messy data into clear business insights</p>
+          </div>
+        </div>
+
+        <div class="cta">
+          <a class="btn" href="mailto:hello.cleardatasolutions@gmail.com"
+            >Free consultation</a
+          >
+        </div>
+      </header>
+
+      <main>
+        <section class="section">
+          <h2>What I do</h2>
+          <p class="small">
+            I help small businesses and solo founders save time and make better
+            decisions by cleaning data, automating reports and building
+            practical dashboards.
+          </p>
+
+          <div class="services" style="margin-top: 12px">
+            <div class="service">
+              <h3>Data Cleaning & Organization</h3>
+              <p>
+                Turn raw spreadsheets into reliable datasets ready for analysis
+                and reporting.
+              </p>
+            </div>
+            <div class="service">
+              <h3>Automated Reporting</h3>
+              <p>
+                Daily or weekly summary reports delivered automatically so you
+                and your team stay on top of performance.
+              </p>
+            </div>
+            <div class="service">
+              <h3>Dashboard Creation</h3>
+              <p>
+                Interactive dashboards in Google Data Studio or Power BI to
+                visualise sales, leads and KPIs.
+              </p>
+            </div>
+            <div class="service">
+              <h3>Lightweight Database Setup</h3>
+              <p>
+                Migrate spreadsheets to a small PostgreSQL/MySQL datastore to
+                manage leads, inventory or transactions.
+              </p>
+            </div>
+          </div>
+        </section>
+        <section class="section" style="margin-top: 18px">
+          <h2>Portfolio</h2>
+          <p class="small">
+            Portfolio coming soon — first demo projects will be added shortly!
+          </p>
+          <!--
+          <p class="small">
+            Demo projects (screenshots & short descriptions). Replace the sample
+            items below with your own project images and text.
+          </p>
+
+          <div class="projects" style="margin-top: 12px">
+            <div class="project">
+              <img
+                src="images/demo-ecom.png"
+                alt="E-commerce sales dashboard screenshot"
+              />
+              <div class="meta">
+                <h4>E-commerce Sales Dashboard</h4>
+                <p class="muted">
+                  Sales trends, top products, monthly revenue. Built with mock
+                  data + Google Data Studio.
+                </p>
+              </div>
+            </div>
+
+            <div class="project">
+              <img
+                src="images/demo-report.png"
+                alt="Automated report screenshot"
+              />
+              <div class="meta">
+                <h4>Automated Weekly Sales Report</h4>
+                <p class="muted">
+                  Python script to summarise CSV data and email a weekly digest
+                  to stakeholders.
+                </p>
+              </div>
+            </div>
+          </div>
+          -->
+        </section>
+        <section class="section two-col" style="margin-top: 18px">
+          <div>
+            <h2>About ClearData Solutions</h2>
+            <p class="small">
+              I founded ClearData Solutions to help small businesses access the
+              value of their data without hiring a full-time analyst. I use
+              Python, Pandas and SQL to clean and organise data, and Google Data
+              Studio or Power BI for dashboards.
+            </p>
+
+            <h3 style="margin-top: 12px; color: var(--blue)">How I work</h3>
+            <p class="muted">
+              Simple, transparent, and outcome-focused: a short discovery call
+              -> build a small focused solution -> handover + optional
+              maintenance. Pricing is friendly for small businesses.
+            </p>
+          </div>
+
+          <aside class="contact-card">
+            <h3>Contact</h3>
+            <p class="muted">
+              Book a free 15-minute consultation to discuss your needs.
+            </p>
+            <p style="margin: 12px 0">
+              <strong>Email</strong><br /><a
+                href="mailto:hello.cleardatasolutions@gmail.com"
+                >hello.cleardatasolutions@gmail.com</a
+              >
+            </p>
+            <p style="margin: 12px 0">
+              <strong>LinkedIn</strong><br /><a
+                href="https://www.linkedin.com/in/YOUR-LINKEDIN"
+                target="_blank"
+                rel="noopener"
+                >Your LinkedIn</a
+              >
+            </p>
+            <p style="margin: 12px 0">
+              <strong>GitHub</strong><br /><a
+                href="https://github.com/YOUR-USERNAME"
+                target="_blank"
+                rel="noopener"
+                >github.com/YOUR-USERNAME</a
+              >
+            </p>
+          </aside>
+        </section>
+      </main>
+
+      <footer>
+        &copy; <span id="year"></span> ClearData Solutions — Built with focus on
+        small businesses
+      </footer>
+    </div>
+
+    <script>
+      // small helpers
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
